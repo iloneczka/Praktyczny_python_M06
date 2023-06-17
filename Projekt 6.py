@@ -27,7 +27,7 @@ class Entry:
     def __init__(self, desc: str, time: int, tags: List[str]):
         self.desc = desc
         self.time = time
-        self.tags= tags
+        self.tags = tags
 
     def __repr__(self) -> str:
        return f"(desc='{self.desc!r}', time={self.time!r}, tags={self.tags!r})"
@@ -42,7 +42,7 @@ def load_entries_from_csv(filename: str) -> List[Entry]:
     Returns:
         A list of Entry objects representing the task entries.
     """
-    list_of_entries= []
+    list_of_entries = []
     with open(filename) as stream:
         reader = csv.DictReader(stream)  
         for row in reader:  
@@ -97,8 +97,8 @@ def main(csv_file: str) -> None:
     Args:
         csv_file: Path to the CSV file containing task entries.
     """
-    list= load_entries_from_csv(csv_file)
-    list_with_counter_and_time= count_time_by_tag(list)
+    list = load_entries_from_csv(csv_file)
+    list_with_counter_and_time = count_time_by_tag(list)
     display_tag_and_time(list_with_counter_and_time)
   
 if __name__ == '__main__':
