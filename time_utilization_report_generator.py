@@ -9,7 +9,7 @@ The program accepts the path to the CSV file as a command-line argument and disp
 Each line of the report corresponds to a tag, and it shows the total time spent on tasks with that tag.
 
 """
-# python3 "Praktyczny_python_M06/Projekt 6.py" "Praktyczny_Python/M06/track.csv"
+# python3 "time_utilization_report_generator.py" "track.csv"
 
 import click
 import csv
@@ -67,13 +67,11 @@ def count_time_by_tag(list_of_entries: List[Entry]) -> Dict[str, int]:
     """
     time_counter = {}
     for entry in list_of_entries:
-        tags = entry.tags  
-        time = entry.time
-        for tag in tags:
+        for tag in entry.tags:
             if tag in time_counter:
-                time_counter[tag] += time
+                time_counter[tag] += entry.time
             else:
-                time_counter[tag] = time
+                time_counter[tag] = entry.time
     return time_counter
     
 def display_tag_and_time(time_counter: Dict[str, int]) -> None:
@@ -85,7 +83,7 @@ def display_tag_and_time(time_counter: Dict[str, int]) -> None:
     """
     print(f"{'TOTAL TIME':>12s}  {'TAG'}")
     print("-------------------------")
-    for tag,time in time_counter.items():
+    for tag, time in time_counter.items():
         print(f"{str(time):>12s}  #{tag}")
 
 @click.command()
@@ -98,8 +96,7 @@ def main(csv_file: str) -> None:
         csv_file: Path to the CSV file containing task entries.
     """
     list = load_entries_from_csv(csv_file)
-    list_with_counter_and_time = count_time_by_tag(list)
-    display_tag_and_time(list_with_counter_and_time)
-  
+    dict_with_counter_and_time = count_time_by_tag(list)
+    display_tag_and_time(dict_with_counter_and_time)
 if __name__ == '__main__':
     main()
