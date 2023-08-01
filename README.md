@@ -20,14 +20,14 @@ This program processes a CSV file containing task entries and generates a report
 ## Technologies Used
 The program is written in Python.
 
-![Python](https://img.shields.io/badge/python-3.x-blue.svg)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
 ## Prerequisites
 To run this project, make sure you have Python 3.x installed on your computer and the required libraries.  
 If you haven't installed the click library yet, you can do so by running:
-,,,
+```
 pip install click
-,,,
+```
 
 ## Setup
 To run the project locally, follow these steps:
@@ -40,9 +40,9 @@ To generate the time utilization report, follow these steps:
 
 1. Prepare a CSV file with the following columns: 'desc', 'time', and 'tags'.
 2. Run the program:
-,,,
+```
 python3 "time_utilization_report_generator.py" "path/to/your/csv/file.csv"
-,,,
+```
 The program will process the CSV file and display the time utilization report, grouping tasks by tags and showing the total time spent on each tag.
 
 ## Testing
@@ -86,4 +86,3 @@ Exporting the report to different formats (e.g., PDF, Excel)
 
 ## Inspirations and Acknowledgments
 This project was inspired by the "Praktyczny Python" training course and was adapted from the original version for educational purposes.
-
